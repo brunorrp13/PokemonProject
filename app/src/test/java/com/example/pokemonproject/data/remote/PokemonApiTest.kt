@@ -12,7 +12,7 @@ import org.junit.Test
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-class NewsAPIServiceTest {
+class PokemonApiTest {
 
     private lateinit var service: PokemonApi
     private lateinit var server: MockWebServer
@@ -38,7 +38,7 @@ class NewsAPIServiceTest {
     }
 
     @Test
-    fun getTopHeadlines_receivedResponse_correctPokemonCount(){
+    fun getPokemonList_receivedResponse_correctPokemonCount(){
         runBlocking {
             enqueueMockResponse("pokemonresponse.json")
             val responseBody = service.getPokemonList(1,1)
@@ -47,7 +47,7 @@ class NewsAPIServiceTest {
     }
 
     @Test
-    fun getTopHeadlines_receivedResponse_correctContent(){
+    fun getPokemonList_receivedResponse_correctContent(){
         runBlocking {
             enqueueMockResponse("pokemonresponse.json")
             val responseBody = service.getPokemonList(1,1)
