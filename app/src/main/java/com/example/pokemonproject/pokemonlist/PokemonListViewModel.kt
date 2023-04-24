@@ -8,7 +8,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.palette.graphics.Palette
-import com.example.pokemonproject.data.models.PokemonListItem
+import com.example.pokemonproject.data.models.Pokemon
 import com.example.pokemonproject.repository.PokemonRepository
 import com.example.pokemonproject.util.Constants.PAGE_SIZE
 import com.example.pokemonproject.util.Resource
@@ -25,12 +25,12 @@ class PokemonListViewModel @Inject constructor(
 
     private var currentPage = 0
 
-    var pokemonList = mutableStateOf<List<PokemonListItem>>(listOf())
+    var pokemonList = mutableStateOf<List<Pokemon>>(listOf())
     var loadError = mutableStateOf("")
     var isLoading = mutableStateOf(false)
     var endReached = mutableStateOf(false)
 
-    private var cachedPokemonList = listOf<PokemonListItem>()
+    private var cachedPokemonList = listOf<Pokemon>()
     private var isSearchStarting = true
     var isSearching = mutableStateOf(false)
 
@@ -52,7 +52,7 @@ class PokemonListViewModel @Inject constructor(
                 return@launch
             }
             val results = listToSearch.filter {
-                it.pokemonName.contains(query.trim(), ignoreCase = true) ||
+                it.name.contains(query.trim(), ignoreCase = true) ||
                         it.number.toString() == query.trim()
             }
             if(isSearchStarting) {
@@ -77,7 +77,7 @@ class PokemonListViewModel @Inject constructor(
                             entry.url.takeLastWhile { it.isDigit() }
                         }
                         val url = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${number}.png"
-                        PokemonListItem(entry.name.capitalize(Locale.ROOT), url, number.toInt())
+                        Pokemon(entry.name.capitalize(Locale.ROOT), url, number.toInt())
                     }
                     currentPage++
 

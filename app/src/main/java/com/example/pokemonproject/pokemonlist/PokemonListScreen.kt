@@ -30,7 +30,7 @@ import androidx.navigation.compose.navigate
 import coil.request.ImageRequest
 import com.example.pokemonproject.R
 import com.google.accompanist.coil.CoilImage
-import com.example.pokemonproject.data.models.PokemonListItem
+import com.example.pokemonproject.data.models.Pokemon
 import com.example.pokemonproject.ui.theme.RobotoCondensed
 
 @Composable
@@ -153,7 +153,7 @@ fun PokemonList(
 
 @Composable
 fun PokemonEntry(
-    entry: PokemonListItem,
+    entry: Pokemon,
     navController: NavController,
     modifier: Modifier = Modifier,
     viewModel: PokemonListViewModel = hiltNavGraphViewModel()
@@ -171,13 +171,13 @@ fun PokemonEntry(
             .background( Color.White)
             .clickable {
                 navController.navigate(
-                    "pokemon_detail_screen/${dominantColor.toArgb()}/${entry.pokemonName}"
+                    "pokemon_detail_screen/${dominantColor.toArgb()}/${entry.name}"
                 )
             }
     ) {
         Column {
             Text(
-                text = entry.pokemonName,
+                text = entry.name,
                 fontFamily = RobotoCondensed,
                 fontSize = 20.sp,
                 textAlign = TextAlign.Center,
@@ -192,7 +192,7 @@ fun PokemonEntry(
                         }
                     }
                     .build(),
-                contentDescription = entry.pokemonName,
+                contentDescription = entry.name,
                 fadeIn = true,
                 modifier = Modifier
                     .size(130.dp)
@@ -211,7 +211,7 @@ fun PokemonEntry(
 @Composable
 fun PokemonRow(
     rowIndex: Int,
-    entries: List<PokemonListItem>,
+    entries: List<Pokemon>,
     navController: NavController
 ) {
     Column {

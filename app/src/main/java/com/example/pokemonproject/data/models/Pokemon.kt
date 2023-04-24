@@ -1,7 +1,7 @@
 package com.example.pokemonproject.data.models
 
-data class PokemonListItem(
-    val pokemonName: String,
+data class Pokemon(
+    val name: String,
     val imgUrl: String,
     val number: Int
 )

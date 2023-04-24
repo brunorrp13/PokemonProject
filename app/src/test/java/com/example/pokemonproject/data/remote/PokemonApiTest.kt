@@ -1,6 +1,5 @@
 package com.example.pokemonproject.data.remote
 
-import com.google.common.truth.Truth
 import com.google.common.truth.Truth.assertThat
 import kotlinx.coroutines.runBlocking
 import okhttp3.mockwebserver.MockResponse
