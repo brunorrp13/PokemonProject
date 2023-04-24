@@ -3,7 +3,7 @@
 Pokemon Project was made in Kotlin (Android) and it has two-screens: A page with the list of Pokemons from the API: https://pokeapi.co/api/v2/ and a page with the details from each Pokemon (that is displayed when the selected Pokemon is clicked on).
 
 ## Design
-The pages were design with Jetpack Compose.
+The pages were designed with Jetpack Compose.
 
 ## Architectural Pattern - MVVM
 The architectural pattern chosen for the project was MVVM due to the clear separation between the Data Layer (that has the API mapping and the Pokemon model) the UI Layer and the repository.
